@@ -1,0 +1,223 @@
+<h1>Formulario</h1>
+<div class="p-fluid">
+  <form [formGroup]="formDriver" (ngSubmit)="onSubmit(formDriver.value)">
+    <p-card>
+      <ng-template pTemplate="header">
+        <div class="p-field">
+          <label for="id">Id:</label>
+          <input pInputText type="text" id="id" formControlName="id" />
+        </div>
+
+        <div *ngIf="idField.invalid && (idField.touched || idField.dirty)">
+          <small *ngIf="idField.errors?.required" class="p-error">
+            El campo es requerrido
+          </small>
+          <small *ngIf="idField.errors?.maxlength" class="p-error">
+            El maximo de caracteres es 5
+          </small>
+        </div>
+
+
+
+        <div class="p-field">
+          <label for="vehicle_id">vehicle_id:</label>
+          <input
+            pInputText
+            type="text"
+            id="vehicle_id"
+            formControlName="vehicle_id"
+          />
+        </div>
+
+        <div *ngIf="vehicleIdField.invalid && (vehicleIdField.touched || vehicleIdField.dirty)">
+          <small *ngIf="vehicleIdField.errors?.required" class="p-error">
+            El campo es requerrido
+          </small>
+          <small *ngIf="vehicleIdField.errors?.maxlength" class="p-error">
+            El maximo de caracteres es 6
+          </small>
+        </div>
+
+
+
+
+
+
+      </ng-template>
+
+      <div class="p-field">
+        <label for="description">description:</label>
+        <input
+          pInputText
+          type="text"
+          id="description"
+          formControlName="description"
+        />
+      </div>
+
+
+      <div *ngIf="descriptionField.invalid && (descriptionField.touched || descriptionField.dirty)">
+        <small *ngIf="descriptionField.errors?.required" class="p-error">
+          El campo es requerrido
+        </small>
+
+      </div>
+
+
+
+
+
+
+
+
+
+      <div class="p-field">
+        <label for="email">email:</label>
+        <input pInputText type="text" id="email" formControlName="email" />
+      </div>
+
+      <div *ngIf="emailField.invalid && (emailField.touched || emailField.dirty)">
+        <small *ngIf="emailField.errors?.required" class="p-error">
+          El campo es requerrido
+        </small>
+        <small *ngIf="emailField.errors?.email" class="p-error">
+          No es un email
+        </small>
+      </div>
+
+
+
+
+
+
+
+
+
+      <div class="p-field">
+        <label for="entryDate">entryDate:</label>
+        <input
+          pInputText
+          type="date"
+          id="entryDate"
+          formControlName="entryDate"
+        />
+      </div>
+
+      <div *ngIf="entryDateField.invalid && (entryDateField.touched || entryDateField.dirty)">
+        <small *ngIf="entryDateField.errors?.required" class="p-error">
+          El campo es requerrido
+        </small>
+      </div>
+
+
+
+
+
+
+
+
+      <ng-template pTemplate="footer">
+        <div class="p-field">
+          <label for="lastname">lastname:</label>
+          <input
+            pInputText
+            type="text"
+            id="lastname"
+            formControlName="lastname"
+          />
+        </div>
+
+        <div *ngIf="lastnameField.invalid && (lastnameField.touched ||lastnameField.dirty)">
+          <small *ngIf="lastnameField.errors?.required" class="p-error">
+            El campo es requerrido
+          </small>
+        </div>
+
+
+        <div class="p-field">
+          <label for="names">names:</label>
+          <input pInputText type="text" id="names" formControlName="names" />
+        </div>
+
+        <div *ngIf="namesField.invalid && (namesField.touched ||namesField.dirty)">
+          <small *ngIf="namesField.errors?.required" class="p-error">
+            El campo es requerrido
+          </small>
+        </div>
+
+
+        <div class="p-field">
+          <button
+        
+            pButton
+            type="submit"
+            label="GUARDAR"
+            icon="pi pi-save"
+          ></button>
+        </div>
+      </ng-template>
+    </p-card>
+  </form>
+</div>
+
+<br />
+<h1>Listado de Conductores</h1>
+
+<br />
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>vehicle_id</th>
+    <th>description</th>
+    <th>email</th>
+    <th>entryDate</th>
+    <th>lastname</th>
+    <th>names</th>
+  </tr>
+  <tr *ngFor="let driver of drivers">
+    <td>
+      {{ driver.id }}
+    </td>
+    <td>
+      {{ driver.vehicle_id }}
+    </td>
+    <td>
+      {{ driver.description }}
+    </td>
+    <td>
+      {{ driver.email }}
+    </td>
+    <td>
+      {{ driver.entryDate }}
+    </td>
+    <td>
+      {{ driver.lastname }}
+    </td>
+    <td>
+      {{ driver.names }}
+    </td>
+    <td>
+      <button
+        pButton
+        type="button"
+        label="Mostrar"
+        (click)="selectDriver(driver)"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="Eliminar"
+        (click)="deleteDriver(driver)"
+        class="p-button-danger"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="Modificar"
+        (click)="updateDriver(driver)"
+        class="p-button-warning"
+      ></button>
+    </td>
+  </tr>
+</table>

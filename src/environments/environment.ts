@@ -1,9 +1,15 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
+const WEB = 'http://backend-cruddriver.test/';
+const API = 'http://backend-cruddriver.test/api/v1/';
 export const environment = {
-  production: false
+  production: false,
+  WEB,
+  STORAGE_URL: WEB + 'storage/',
+  API_URL_AUTHENTICATION: API + 'Authentication/',
+  API_URL_PRIVATE: API + 'private/',
+  API_URL_PUBLIC: API + 'public/',
 };
 
 /*
